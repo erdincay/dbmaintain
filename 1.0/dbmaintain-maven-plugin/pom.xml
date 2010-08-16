@@ -1,0 +1,76 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.dbmaintain</groupId>
+    <artifactId>dbmaintain-parent</artifactId>
+    <version>1.0</version>
+  </parent>
+  <artifactId>dbmaintain-maven-plugin</artifactId>
+  <packaging>maven-plugin</packaging>
+  <version>1.0</version>
+  <name>${project.artifactId}</name>
+  <description>
+    Maven plugin for dbmaintain.
+    
+    DbMaintain enables automatic roll-out of updates to a relational database. 
+    It brings database scripts into version control just like regular source code 
+    and can be used to transparantly deploy databases from development on to production.
+  </description>
+  <dependencies>
+    <dependency>
+      <groupId>org.dbmaintain</groupId>
+      <artifactId>dbmaintain</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.maven</groupId>
+      <artifactId>maven-script-ant</artifactId>
+      <version>2.0.9</version>
+    </dependency>
+  </dependencies>
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-plugin-plugin</artifactId>
+        <version>2.4.3</version>
+        <dependencies>
+          <dependency>
+            <groupId>org.apache.maven.plugin-tools</groupId>
+            <artifactId>maven-plugin-tools-ant</artifactId>
+            <version>2.4.3</version>
+          </dependency>
+        </dependencies>
+        <configuration>
+          <!-- 
+          <goalPrefix>dbmaintain</goalPrefix>
+          -->
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>shitty-maven-plugin</artifactId>
+        <version>1.0-alpha-3</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>clean</goal>
+              <goal>install</goal>
+              <!--goal>test</goal-->
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <verbose>true</verbose>
+        </configuration>
+      </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-site-plugin</artifactId>
+          <configuration>
+            <templateFile>${basedir}/../src/site/maven-site.vm</templateFile>
+          </configuration>
+         </plugin>
+    </plugins>
+  </build>
+</project>

@@ -1,0 +1,44 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.dbmaintain.test</groupId>
+  <artifactId>cleardatabase</artifactId>
+  <packaging>pom</packaging>
+  <version>1.1</version>
+  <name>${project.artifactId}</name>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.dbmaintain</groupId>
+        <artifactId>dbmaintain-maven-plugin</artifactId>
+        <version>@pom.version@</version>
+        <dependencies>
+          <dependency>
+            <groupId>hsqldb</groupId>
+            <artifactId>hsqldb</artifactId>
+            <version>1.8.0.10</version>
+            <scope>test</scope>
+          </dependency>
+        </dependencies>
+        <executions>
+          <execution>
+            <phase>integration-test</phase>
+            <goals>
+              <goal>clearDatabase</goal>
+            </goals>
+            <configuration>
+              <database>
+                <driverClassName>org.hsqldb.jdbcDriver</driverClassName>
+                <url>jdbc:hsqldb:mem:test</url>
+                <userName>SA</userName>
+                <password></password>
+                <dialect>hsqldb</dialect>
+                <schemaNames></schemaNames>
+              </database>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+</project>

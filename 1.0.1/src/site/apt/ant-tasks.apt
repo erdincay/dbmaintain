@@ -1,0 +1,38 @@
+ --------
+ Ant tasks
+ --------
+ --------
+
+Ant tasks
+~~~~~~~~~
+
+    This page gives an overview of the different ant tasks and their attributes. The operations and attributes are not explained: for this we refer to the {{{tutorial.html#DbMaintain_operations}DbMaintain operations section in the tutorial}}.
+
+* Tasks
+~~~~~~~
+	
+*--------+--------------+-------------------+
+|<<Task>>|<<Attributes>>|<<Child elements>>|
+*--------+--------------+-------------------+
+|createScriptArchive|archiveFileName (required), scriptLocations (required), scriptEncoding, postProcessingScriptDirectoryName, patchQualifiers, qualifierPrefix, targetDatabasePrefix, scriptFileExtensions, configFile|
+*--------+--------------+-------------------+
+|updateDatabase|scriptLocations (required), fromScratchEnabled, autoCreateDbMaintainScriptsTable, allowOutOfSequenceExecutionOfPatches, cleanDb, disableConstraints, updateSequences, useLastModificationDates, scriptFileExtensions, configFile|database|
+*--------+--------------+-------------------+
+|markDatabaseAsUpToDate|scriptLocations (required), autoCreateDbMaintainScriptsTable, scriptFileExtensions, configFile|database|
+*--------+--------------+-------------------+
+|clearDatabase|configFile|database|
+*--------+--------------+-------------------+
+|cleanDatabase|configFile|database|
+*--------+--------------+-------------------+
+|disableConstraints|configFile|database|
+*--------+--------------+-------------------+
+|updateSequences|lowestAcceptableSequenceValue, configFile|database|
+*--------+--------------+-------------------+
+
+* Child elements
+~~~~~~~~~~~~~~~~
+
+*-----------------+--------------+
+|<<Child element>>|<<Attributes>>|
+*-----------------+--------------+
+|database|name, enabled, dialect, driverClassName, url, userName, password, defaultSchemaName, schemaNames|
